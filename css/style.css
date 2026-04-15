@@ -1,1905 +1,2174 @@
-/* GLOBAL SETTINGS */
-:root {
-    --primary: #0A1128;      /* Deep Navy (Luxury) */
-    --accent: #C6A75E;       /* Unified Gold */
-    --accent-light: #E5C678; /* Gradient Highlight */
-    --text: #4A4A4A;
-    --light: #F8F9FA;
-    --white: #ffffff;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+/*
+=========================================================
+STYLESHEET: Elite Consulting Design Protocol
+PROJECT: Basira Economic Intelligence Platform
+AUTHOR: Ahmed Ibrahim Mossa
+DESIGN SYSTEM: Corporate Luxury / Precision Engineering
+
+DESCRIPTION:
+Advanced CSS architecture for a high-end consulting 
+interface, focusing on neural-style animations, 
+glassmorphism, and sophisticated border gradients.
+
+TECHNICAL HIGHLIGHTS:
+✔ Unified CSS Custom Properties for scalability.
+✔ Advanced Mask-Composite for glow borders.
+✔ Smooth 3D Flip interactions for project cards.
+✔ Mobile-First Fluid Typography (Clamp logic).
+
+ARCHITECTURE OVERVIEW:
+01. ROOT VARIABLES: Primary Navy & Unified Gold palette.
+02. GLOBAL RESET: Semantic base & typography scaling.
+03. HEADER LOGIC: Glassmorphism & Mega-Menu system.
+04. HERO SECTION: Pulse animations & AI-driven overlays.
+05. COMPONENTS: Service Cards, Flip Effects, Tooltips.
+06. STRATEGIC TOOLS: Pure Border Gradient Protocol.
+07. UX ELEMENTS: Floating WhatsApp & Action buttons.
+08. RESPONSIVITY: Fluid breakpoints for MENA markets.
+
+LAST UPDATED: 2026
+=========================================================
+*/
+
+/* =====================================================
+[01] ROOT VARIABLES & GLOBAL RESET
+=====================================================
+Purpose:
+- Establish a consistent luxury color palette.
+- Define smooth cubic-bezier transitions for premium feel.
+- Set up a solid typographic foundation using 'Jost'.
+=====================================================
+*/
 
-* { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box; 
-}
-body { 
-    background-color: #ffffff;
-    font-family: 'Jost', 
-    sans-serif; color: var(--primary); 
-    line-height: 1.7; 
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-html {
-    scroll-behavior: smooth;
-}
-.container { 
-    width: 90%; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-}
-.flex-between { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-.section-padding { 
-    padding: 120px 0; 
-}
-a { 
-    text-decoration: none; 
-    color: inherit; 
-    transition: var(--transition); 
-}
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-::selection {
-    background: var(--accent);
-    color: var(--primary);
-}
 
-/* --- ELITE CONSULTING HEADER ENGINEERING --- */
-
-.site-header {
-    width: 100%;
-    z-index: 1000;
-    position: relative;
-    background: #fff;
-}
-
-/* 1. Top Bar - Corporate Language */
-.top-bar {
-    background: var(--primary);
-    padding: 10px 0;
-    font-size: 13px;
-    color: rgba(255,255,255,0.7);
-}
-
-.top-links a {
-    margin-right: 20px;
-    color: inherit;
-    transition: var(--transition);
-}
-
-.top-links a:hover { 
-    color: var(--accent); 
-}
-
-.top-social { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-}
-.top-social a { 
-    color: #fff; 
-    transition: var(--transition); 
-}
-.top-social a:hover { 
-    color: var(--accent); 
-    transform: translateY(-2px); 
-}
-
-/* The WhatsApp icon is distinguished by its famous color, 
-exclusive to Hover, to maintain the elegance of navy blue */
-.top-social a:hover .fa-whatsapp {
-    color: #25D366;
-}
-.top-social a:hover .fa-youtube {
-    color: #FF0000;
-}
-.top-social a:hover .fa-facebook-f {
-    color: #1877F2;
-}
-.top-social a:hover .fa-instagram {
-    color: #E4405F;
-}
-.contact-numbers {
-    display: flex;
-    gap: 15px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-.phone-link {
-    color: #fff !important;
-    font-size: 12px;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.phone-link:hover {
-    color: var(--accent) !important;
-}
-.phone-link i {
-    color: #25D366;
-    font-size: 14px;
-}
-
-/* Hide unnecessary links in the top bar */
-@media (max-width: 991px) {
-    .top-bar .portal-link {
-        display: none !important;
-    }
-    /* Make the top bar centered on the mobile */
-    .top-bar .container {
-        justify-content: center;
-    }
-}
-
-/* Hide numbers on very small screens to maintain a clean design */
-@media (max-width: 768px) {
-    .top-bar .divider {
-        display: none !important;
-    }
-} 
-@media (max-width: 768px) {
-    .contact-numbers { 
-        display: none; 
-    }
-}
-
-.portal-link { 
-    background: rgba(225, 177, 106, 0.2); 
-    padding: 5px 12px; 
-    border-radius: 4px; 
-    color: var(--accent) !important;
-    font-weight: 600;
-}
-
-/* 2. Main Nav - Professional Navigation */
-.main-nav {
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-    background: #fff;
-}
-
-.logo {
-    font-family: 'Jost', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--primary);
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.logo span {
-    color: var(--accent);
-    font-weight: 300;
-    margin-left: 2px;
-}
-
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: var(--transition);
-}
-
-.logo:hover::after { 
-    width: 100%; 
-}
-
-.nav-list { 
-    display: flex; 
-    gap: 35px; 
-    list-style: none; 
-    align-items: center; 
-}
-.nav-list a { 
-    font-weight: 700; 
-    color: var(--primary); 
-    text-transform: uppercase; 
-    font-size: 13px;
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
-
-.nav-list a:hover, .nav-list a.active {
-    color: var(--accent); 
-}
-
-/* 3. Mega Dropdown - Luxury Implementation */
-.has-mega { 
-    position: static; 
-}
-
-.mega-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(15px);
-    z-index: 999;
-    border-top: 3px solid var(--accent);
-    padding: 50px 10% !important;
-    background: linear-gradient(to bottom, #ffffff, #fcfaf7);
-    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.6s ease;
-}
-
-.has-mega:hover .mega-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.mega-col h3 {
-    color: var(--primary);
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-.mega-col a {
-    display: block;
-    padding: 10px 0 10px 25px !important;
-    font-weight: 500;
-    text-transform: none;
-    color: #555;
-    position: relative;
-    font-size: 15px;
-    transition: all 0.3s ease !important;
-}
-
-.mega-col a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    opacity: 0;
-    transition: var(--transition);
-    font-size: 20px;
-}
-
-.mega-col a:hover { 
-    color: var(--accent); 
-    padding-left: 30px !important;
-}
-
-.mega-col a:hover::before { 
-    opacity: 1; 
-}
-
-/* 4. Ticker Bar - Glassmorphism Effect */
-.ticker-bar {
-    background: rgba(248,249,250,0.95);
-    padding: 10px 0;
-    text-align: center;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    font-size: 13px;
-    font-weight: 500;
-    position: sticky;
-    top: 0;
-    z-index: 998;
-}
-
-.ticker-bar p {
-    font-family: 'Jost', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-}
-
-.ticker-bar span {
-    background: var(--accent);
-    color: var(--primary);
-    padding: 3px 12px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.ticker-bar span:hover { 
-    background: var(--primary); 
-    color: #fff; 
-}
-
-/* 5. Actions & Buttons */
-.nav-actions { 
-    display: flex; 
-    align-items: center; 
-    gap: 25px; 
-}
-.nav-actions i { 
-    color: var(--primary); 
-    cursor: pointer; 
-    transition: var(--transition); 
-}
-.nav-actions i:hover { 
-    color: var(--accent); 
-}
-
-/* ===============================
-   SEARCH BUTTON FIX
-================================= */
-
-.search-btn {
-    background: transparent;
-    border: none;
-    color: inherit;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.search-btn:hover {
-    opacity: 0.7;
-}
-
-.btn-quote {
-    background: var(--primary);
-    color: #fff !important;
-    padding: 12px 25px;
-    border-radius: 4px;
-    font-size: 12px !important;
-    font-weight: 700;
-    box-shadow: 0 10px 20px rgba(10, 14, 26, 0.15);
-    border: 2px solid var(--primary);
-    transition: var(--transition);
-}
-
-.btn-quote:hover {
-    background: transparent !important;
-    color: var(--primary) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(10, 14, 26, 0.2);
-}
-@media (max-width: 991px) {
-    /* Hide only the separators */
-    .top-bar .divider {
-        display: none !important;
-    }
-
-    /* Minimize the main menu to fit the display */
-    .main-nav ul {
-        gap: 10px; 
-    }
-
-    .main-nav ul li a {
-        font-size: 13px; 
-        padding: 5px;
-    }
-
-    /* Make the logo and menu on two separate lines if necessary to prevent overlap */
-    .nav-container {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 0;
-    }
-}
-
-/* ==========================================
-    SECTION 1: HERO SECTION (The Simulation) 
-============================================== */
-.hero-section {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
-.hero-bg-picture{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    width:100%;
-    height:100%;
-}
-
-.hero-bg-picture img {
-    display:block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right center; 
-}
-@media (max-width:1024px){
-  .hero-section{
-    background-attachment: scroll;
-  }
-}
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    /* The golden touch: The gradient starts from dark blue to ensure 
-    the text is legible and ends with complete transparency to show the man */    
-    background: linear-gradient(to right, 
-        rgba(10, 17, 40, 1) 0%, 
-        rgba(10, 17, 40, 0.9) 35%, 
-        rgba(10, 17, 40, 0) 80%
-    );
-
-    z-index: 1;
-    display: flex;
-    align-items: center;
-}
-
-/* Improved Badge Design */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(225, 177, 106, 0.1);
-    color: var(--accent);
-    padding: 8px 18px;
-    border-radius: 50px;
-    border: 1px solid rgba(225, 177, 106, 0.3);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 75px;
-}
-
-/* A pulsating dot gives the impression of Live AI */
-.pulse {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 0 rgba(225, 177, 106, 0.4);
-    animation: pulse-animation 2s infinite;
-}
-
-@keyframes pulse-animation {
-    0% { box-shadow: 0 0 0 0 rgba(225, 177, 106, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(225, 177, 106, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(225, 177, 106, 0); }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding-left: 5%;
-}
-
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(38px, 5.5vw, 70px); 
-    line-height: 1.15;
-    color: var(--white);
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-.highlight {
-    color: var(--accent);
-}
-
-.hero-content p {
-    font-size: 18px;
-    color: rgba(255,255,255,0.85);
-    max-width: 580px;
-    line-height: 1.8;
-    margin-bottom: 45px;
-}
-
-/* Luxury Buttons */
-.btn-main {
-    background: var(--accent);
-    color: var(--primary) !important;
-    padding: 18px 38px;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: var(--transition);
-}
-.btn-main:hover {
-    background: var(--white);
-    transform: translateY(-5px);
-}
-
-.btn-secondary {
-    margin-left: 25px;
-    color: var(--white);
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 14px;
-}
-
-.play-icon {
-    width: 55px;
-    height: 55px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.btn-secondary:hover .play-icon {
-    background: var(--accent);
-    color: var(--primary);
-}
-
-.hero-trust {
-    margin-top: 60px;
-    opacity: 0.6;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.hero-trust::before {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: var(--accent);
-}
-
-/* Improved phone to ensure the man appears */
-@media (max-width: 768px) {
-    .hero-section { 
-        background-position: center; 
-    }
-    .hero-overlay { 
-        background: rgba(10, 17, 40, 0.85); 
-    }
-    .hero-content { 
-        padding-left: 20px; 
-        text-align: center; 
-    }
-    .btn-secondary { 
-        margin-left: 0; 
-        margin-top: 20px; 
-    }
-}
-
-
-/* ===================================
-    SECTION 2: GLOBAL FEATURES SECTION 
-====================================== */
-
-.global-features {
-    background: #fff;
-    border-top: 1px solid #eee;
-}
-
-.features-wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    text-align: center;
-}
-
-.icon-stack {
-    position: relative;
-    height: 80px;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
-}
-
-.icon-stack i {
-    font-size: 50px;
-    color: #e0e0e0; 
-    position: absolute;
-    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.icon-stack .f-top {
-    color: var(--accent); 
-    transform: translateY(80px); 
-    opacity: 0;
-}
-
-/* Switching action when the mouse hovers */
-.f-item:hover .icon-stack i:first-child {
-    transform: translateY(-80px); 
-    opacity: 0;
-}
-
-.f-item:hover .icon-stack .f-top {
-    transform: translateY(0); 
-    opacity: 1;
-}
-
-.f-item h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.f-item p {
-    font-size: 14px;
-    color: #777;
-    line-height: 1.5;
-    padding: 0 10px;
-}
-
-/* ===================================
-    SECTION 3: GRID GLASSMORPHISM 
-====================================== */
-
-.glass-grid { 
-    /* position: relative;  */
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    margin-top: -10px; 
-    z-index: 10; 
-}
-
-.service-card { 
-    position: relative; 
-    display: flex; 
-    align-items: flex-end; 
-    padding: 40px; 
-    height: 450px; 
-    overflow: hidden; 
-    border-radius: 8px; 
-    color: #fff; 
-}
-.service-card::before { 
-    content: ''; 
-    position: absolute; 
-    inset: 0; 
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
-    z-index: 0;
-}
-.card-bg {
-    /* These features ensure that the image intelligently fills the space */
-    position: absolute; 
-    inset: 0; 
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    transition: transform 1s ease;
-    z-index: -1; 
-}
-.card-content p {
-    font-size: 15px;
-}
-.service-card .card-content {
-    z-index: 2; 
-}
-.arrow-link {
-    position: relative;
-    display: inline-block;
-    color: var(--accent);
-    font-weight: 600;
-    padding-bottom: 5px;
-    letter-spacing: 1px;
-}
-.arrow-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent);
-    transition: var(--transition);
-}
-.service-card .card-content h2 {
-    transition: var(--transition);
-}
-.service-card:hover .card-bg { 
-    transform: scale(1.1); 
-}
-.service-card:hover .arrow-link::after {
-    width: 100%; 
-}
-.service-card:hover .card-content h2 {
-    transform: translateY(-20px); 
-}
-.service-card,
-.flip-inner,
-.pro-tool-card {
-    will-change: transform;
-}
-
-
-/* ===================================
-    SECTION 4: PROJECTS (The Trend)
-====================================== */
-
-/* --- SECTION STYLING --- */
-.section-head-center { 
-    text-align: center; 
-    margin-bottom: 50px; 
-}
-.sub-title { 
-    color: var(--accent); 
-    font-weight: 700; 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
-    display: block; 
-    margin-bottom: 10px; 
-}
-.section-head-center h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 40px; 
-    color: var(--primary); 
-}
-
-/* --- NAVIGATION BAR --- */
-.projects-nav-bar {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-    padding-bottom: 25px; 
-    margin-bottom: 40px;
-}
-.nav-label { 
-    font-size: 22px; 
-    font-weight: 700; 
-    color: var(--primary); 
-    font-family: 'Playfair Display', serif; 
-}
-.nav-right { 
-    display: flex; 
-    align-items: center; 
-    gap: 40px; 
-}
-.categories-list { 
-    display: flex; 
-    gap: 25px; 
-}
-.cat-item { 
-    font-size: 13px; 
-    font-weight: 700; 
-    color: #ccc; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    transition: 0.3s ease;
-}
-.cat-item.active { 
-    color: var(--accent); 
-}
-
-.slider-arrows button {
-    background: transparent; 
-    border: 1.5px solid var(--accent); 
-    color: var(--primary);
-    width: 45px; 
-    height: 45px; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.slider-arrows button:hover { 
-    background: var(--accent); 
-    color: #fff; 
-}
-
-/* --- PROJECT CARDS GRID --- */
-.projects-slider { 
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px; 
-}
-
-/* --- IMAGE FLIP (SLOWER & SMOOTHER) --- */
-.image-flip-box { 
-    height: 300px; 
-    perspective: 1200px; 
-}
-.flip-inner {
-    position: relative; 
-    width: 100%; 
-    height: 100%;
-    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1); 
-    transform-style: preserve-3d;
-}
-.project-card:hover .flip-inner { 
-    transform: rotateY(180deg); 
-}
-
-.flip-front, .flip-back { 
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
-    backface-visibility: hidden; 
-    border-radius: 15px; 
-}
-.flip-front img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 15px; 
-}
-
-.flip-back {
-    background: var(--primary); 
-    transform: rotateY(180deg);
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    padding: 30px; 
-    color: #fff; 
-    text-align: center; 
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-/* --- BACK CONTENT & BOTTOM TOOLTIP --- */
-.back-content h4 { 
-    font-family: 'Playfair Display', serif; 
-    color: var(--accent); 
-    font-size: 20px; 
-    margin-bottom: 12px; 
-}
-.back-content p { 
-    font-size: 13px; 
-    line-height: 1.6; 
-    opacity: 0.8; 
-    margin-bottom: 25px; 
-}
-
-.back-tools { 
-    display: flex; 
-    gap: 20px; 
-    justify-content: center; 
-}
-.tool-wrapper { 
-    position: relative; 
-    display: inline-block; 
-}
-
-/* The Tooltip (Now appearing from Bottom) */
-.tooltip {
-    position: absolute; 
-    top: 110%; 
-    left: 50%; 
-    transform: translateX(-50%);
-    background: var(--accent); 
-    color: var(--primary); 
-    padding: 6px 14px;
-    font-size: 10px; 
-    font-weight: 800; 
-    border-radius: 4px; 
-    white-space: nowrap;
-    opacity: 0; 
-    visibility: hidden; 
-    transition: 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    z-index: 10;
-}
-.tooltip::before { 
-    /* Small triangle pointing Up */
-    content: ''; 
-    position: absolute; 
-    bottom: 100%; left: 50%; 
-    transform: translateX(-50%);
-    border-width: 5px; 
-    border-style: solid; 
-    border-color: transparent transparent var(--accent) transparent;
-}
-.tool-wrapper:hover .tooltip { 
-    opacity: 1; 
-    visibility: visible; 
-    top: 125%; 
-}
-
-.back-tools a {
-    width: 50px; 
-    height: 50px; 
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    transition: 0.3s ease;
-}
-.back-tools a:hover { 
-    background: var(--accent); 
-    color: var(--primary); 
-    border-color: var(--accent); 
-    transform: translateY(3px); 
-}
-
-/* --- STATIC DATA --- */
-.static-data { 
-    padding: 20px 5px; 
-}
-.sector { 
-    color: var(--accent); 
-    font-weight: 700; 
-    font-size: 11px; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-}
-.static-data h3 { 
-    font-size: 20px; 
-    color: var(--primary); 
-    margin: 8px 0; 
-    font-family: 'Playfair Display', serif; 
-    transition: 0.3s; 
-}
-.project-card:hover .static-data h3 { 
-    color: var(--accent); 
-}
-.stats { 
-    font-size: 14px; 
-    color: #777; 
-    font-weight: 500; 
-}
-.stats span { 
-    color: var(--primary); 
-    font-weight: 800; 
-    margin-left: 5px; 
-}
-
-/*  ====================================================
-     SECTION 5: TESTIMONIAL SECTION (THE EXECUTIVE LOOK)
-    ====================================================  */
-
-.testimonial-section {
-    background-color: #F5F6F8; 
-    padding: 90px 0;
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid var(--accent-light);
-    border-bottom: 2px solid var(--accent-light);
-}
-
-/* Section title in the middle */
-.section-head-center {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-head-center .sub-title {
-    display: block;
-    font-family: 'Jost', sans-serif;
-    color: var(--accent); 
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.section-head-center h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    color: var(--primary); 
-    font-weight: 700;
-}
-
-/* Certificate Container */
-.testimonial-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    padding: 60px 40px;
-    background: #ffffff;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.03); 
-    border-radius: 4px;
-}
-
-/* Classic Quote Icon */
-.quote-icon {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px); 
-    width: 70px;
-    height: 70px;
-    background: var(--accent);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 24px;
-    box-shadow: 0 10px 20px rgba(225, 177, 106, 0.3);
-    z-index: 2;
-}
-
-/* Quoted certificate text */
-.testimonial-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    line-height: 1.7;
-    color: var(--primary);
-    font-style: italic;
-    margin-bottom: 30px;
-    text-align: center;
-    position: relative;
-}
-
-/* Client Profile */
-.client-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.client-img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.client-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    filter: grayscale(30%); 
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.client-info h4 {
-    font-family: 'Jost', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 5px;
-}
-
-.client-info p {
-    font-family: 'Jost', sans-serif;
-    font-size: 13px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-/* Control buttons (Prev/Next) */
-.testimonial-controls {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    padding: 0 20px;
-    pointer-events: none; 
-}
-
-.control-btn {
-    width: 50px;
-    height: 50px;
-    border: 1px solid var(--accent);
-    color: var(--primary);
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    pointer-events: auto; 
-}
-
-.control-btn:hover {
-    background: var(--accent);
-    color: var(--primary);
-    transform: scale(1.1);
-}
-
-/* Improved responsiveness for small screens */
-@media (max-width: 768px) {
-    .testimonial-text { font-size: 20px; }
-    .testimonial-controls { 
-        position: static; 
-        transform: none; 
-        margin-top: 30px; 
-        justify-content: center; 
-    }
-}
-
-/*  ================================================
-        SECTION 6: PURE BORDER GRADIENT PROTOCOL
-    ================================================  */
-
-.tools-section {
-    background: #080c1a; 
-    padding: 120px 0;
-}
-
-.section-main-title {
-    color: #ffffff !important;
-    font-size: 42px;
-    font-family: 'Playfair Display', serif;
-    margin-top: 15px;
-}
-
-.tools-grid-final {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 60px;
-}
-
-.pro-tool-card {
-    position: relative;
-    border-radius: 20px;
-    /* This is the transparent border that will hold the gradient */
-    border: 1.5px solid transparent; 
-    background: #080c1a; 
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-}
-
-/* Hidden gradient layer behind the border */
-.pro-tool-card::before {
-    content: '';
-    position: absolute;
-    inset: -1.5px; 
-    border-radius: 20px;
-    padding: 1.5px; 
-    background: linear-gradient(135deg, var(--accent), #fff, var(--accent));
     
-    /* Global technology for removing the center and showing only the border */
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    opacity: 0.15; 
-    transition: 0.5s ease;
-    pointer-events: none; 
-}
-
-.pro-tool-inner {
-    padding: 50px 35px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    z-index: 2; 
-    cursor: default;
-}
-
-.pro-icon-box {
-    font-size: 38px;
-    color: var(--accent);
-    margin-bottom: 25px;
-    transition: 0.5s ease;
-}
-
-.pro-tool-card h3 {
-    color: #ffffff;
-    font-size: 22px;
-    font-family: 'Jost', sans-serif;
-    margin-bottom: 18px;
-}
-
-.pro-tool-card p {
-    color: #a0aec0; 
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.pro-footer {
-    margin-top: auto; 
-    padding-top: 20px;
-}
-
-.pro-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-decoration: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 10; 
-    transition: all 0.3s ease;
-}
-
-.pro-footer a {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.6;
-    transition: 0.3s;
-}
-
-
-/* Arrow movement when hovering over the link */
-.pro-link i {
-    transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-}
-
-.pro-link:hover {
-    color: #ffffff;
-}
-
-.pro-link:hover i {
-    transform: translateX(8px);
-}
-a:focus,
-button:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-}
-
-
-/* --- HOVER STATE: ONLY BORDER CHANGES --- */
-.pro-tool-card:hover, 
-.pro-tool-card.active {
-    transform: translateY(-10px);
-}
-
-/* The color gradient only illuminates at the border */
-.pro-tool-card:hover::before,
-.pro-tool-card.active::before {
-    opacity: 1;
-    background: linear-gradient(135deg, var(--accent), #fff, var(--accent));
-}
-
-.pro-tool-card:hover .pro-icon-box {
-    transform: scale(1.1);
-    text-shadow: 0 0 15px rgba(236, 186, 85, 0.4);
-}
-
-.pro-tool-card:hover p {
-    color: #ffffff;
-}
-
-.pro-tool-card:hover .pro-footer a {
-    opacity: 1;
-    gap: 12px;
-}
-
-/*  ================================================
-        SECTION 7: STRATEGIC INSIGHTS SECTION
-    ================================================  */
-
-
-.insights-section {
-    background-color: #f8f9fa;
-}
-
-.insights-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.insight-card {
-    background: #fff;
-    border-radius: 0; 
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: var(--transition);
-    border-bottom: 3px solid transparent;
-}
-
-.insight-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent); 
-}
-
-.insight-img {
-    position: relative;
-    height: 240px;
-    overflow: hidden;
-}
-
-.insight-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.insight-card:hover .insight-img img {
-    transform: scale(1.1);
-}
-
-.insight-img .category {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: var(--accent);
-    color: var(--primary);
-    padding: 5px 15px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.insight-body {
-    padding: 30px;
-}
-
-.insight-body .meta {
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.insight-body h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    line-height: 1.4;
-    color: var(--primary);
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.insight-body p {
-    font-size: 15px;
-    color: var(--text);
-    margin-bottom: 25px;
-
-    display: -webkit-box; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.read-more {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary);
-    text-decoration: underline !important;
-    text-underline-offset: 5px;
-}
-
-.read-more:hover {
-    color: var(--accent);
-}
-
-/* Formatting for the top button */
-.btn-text {
-    font-weight: 600;
-    color: var(--primary);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 5px;
-}
-
-.btn-text i {
-    margin-left: 10px;
-    transition: 0.3s;
-}
-
-.btn-text:hover i {
-    transform: translateX(5px);
-}
-
-/* ===============================
-   SECTION 8: LEAD MAGNET SECTION
-================================= */
-
-.lead-magnet {
-    text-align: center;
-}
-
-.lead-box {
-    max-width: 750px;
-    margin: auto;
-    background: #ffffff;
-    padding: 50px;
-    border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-}
-
-.lead-box h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    margin-bottom: 15px;
-    color: #0A1128;
-}
-
-.lead-box p {
-    margin-bottom: 25px;
-    color: #555;
-}
-
-.lead-form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.lead-form input {
-    padding: 14px 16px;
-    width: 280px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-}
-
-.lead-form button {
-    padding: 14px 22px;
-    background: var(--accent);
-    border: none;
-    color: #0A1128;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: 0.3s ease;
-}
-
-.lead-form button:hover {
-    transform: translateY(-3px);
-}
-
-/* ===============================
-    SECTION 9: CONTACT CTA SECTION
-================================= */
-
-.contact-cta {
-    background: linear-gradient(135deg, #0A1128 0%, #0F1A3D 100%);
-    color: #fff;
-    text-align: center;
-}
-
-.cta-box {
-    max-width: 800px;
-    margin: auto;
-}
-
-.contact-cta h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.contact-cta p {
-    font-size: 18px;
-    opacity: 0.85;
-    margin-bottom: 35px;
-}
-
-.contact-cta .btn-main {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--accent);
-    color: #0A1128;
-    font-weight: 600;
-    border-radius: 40px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.contact-cta .btn-main:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-
-/* --- FOOTER ENGINEERING --- */
-
-.main-footer {
-    background: #0a0e1a; 
-    color: #fff;
-    padding: 100px 0 30px;
-    border-top: 4px solid var(--accent); 
-}
-
-/* Div 1 Styling */
-.footer-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    margin-bottom: 60px;
-}
-
-.footer-subscribe h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.newsletter-form {
-    display: flex;
-    margin-top: 25px;
-    gap: 10px;
-}
-.newsletter-form input {
-    padding: 15px 25px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    width: 350px;
-    transition: 0.3s;
-}
-.newsletter-form input:focus {
-    border-color: var(--accent);
-    outline: none;
-}
-
-.btn-subscribe {
-    background: var(--accent);
-    color: var(--primary);
-    padding: 0 30px;
-    border: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.4s;
-}
-.btn-subscribe:hover {
-    background: #fff;
-    transform: translateY(-3px);
-}
-
-.footer-social-box {
-    display: flex;
-    gap: 15px;
-}
-.social-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid rgba(225, 177, 106, 0.2);
-    transition: var(--transition);
-}
-.social-icon:hover {
-    background: var(--accent);
-    color: var(--primary) !important;
-    transform: translateY(-5px);
-}
-
-/* Div 2: Grid Styling */
-.footer-links-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
-}
-.footer-links-grid .logo {
-    font-family: 'Jost', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: white;
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 20px; 
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-.footer-links-grid .logo span {
-    font-weight: 300; 
-    letter-spacing: 1px;
-}
-
-.footer-brand p {
-    margin-top: 20px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.8;
-    font-size: 14px;
-    margin-top: 15px;
-    max-width: 320px; 
-}
-
-
-.link-col h3 {
-    font-size: 18px;
-    color: var(--accent);
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.link-col a {
-    display: block;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 15px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.link-col a:hover {
-    color: #fff;
-    padding-left: 8px; 
-}
-
-/* Div 3: Bottom Bar */
-.footer-bottom-bar p {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 30px;
-    font-size: 13px; 
-    color: rgba(255, 255, 255, 0.5); 
-    letter-spacing: 0.5px;
-    word-spacing: 1px;
-    text-align: center;
-}
-
-
-/* Solving overall responsiveness problems */
-@media (max-width: 992px) {
-    /* Section 1: Services */
-    .glass-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-    }
-    /* Section 3: Services */
-    .features-wrapper { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-    }
-    /* Section 5: Services */
-    .projects-slider { 
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    /* Section 7: Services */
-    .tools-grid-final  { 
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    /* Section 8: Services */
-    .insights-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
+    /* GLOBAL SETTINGS */
+    :root {
+        --primary: #0A1128;      /* Deep Navy (Luxury) */
+        --accent: #C6A75E;       /* Unified Gold */
+        --accent-light: #E5C678; /* Gradient Highlight */
+        --text: #4A4A4A;
+        --light: #F8F9FA;
+        --white: #ffffff;
+        --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    /* Footer: Solution to the overlap between the hood and height */
-    .footer-links-grid {
-        grid-template-columns: 1fr 1fr !important; 
-        gap: 30px;
+    /* =====================================================
+    [02] GLOBAL RESET & BASE TYPOGRAPHY
+    =====================================================
+    Purpose:
+    - Reset default browser margins and paddings.
+    - Set up the semantic foundation for the document.
+    - Apply high-end anti-aliasing for professional font rendering.
+    - Ensure smooth scrolling for internal anchor links.
+    =====================================================
+    */
+    * { 
+        margin:0; 
+        padding:0; 
+        box-sizing:border-box; 
     }
-    .footer-top-row {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
+    body { 
+        background-color: #ffffff;
+        font-family: 'Jost', 
+        sans-serif; color: var(--primary); 
+        line-height: 1.7; 
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
-    .newsletter-form {
-        flex-direction: column;
-        align-items: center;
+    html {
+        scroll-behavior: smooth;
     }
-    .newsletter-form input { 
-        width: 100%; 
-        max-width: 400px; 
-    }
-}
 
-@media (max-width: 600px) {
-    /* Converting everything to a single column in the small mobile phone */
-    .glass-grid, 
-    .projects-slider, 
-    .tools-grid-final, 
-    .insights-grid, 
-    .features-wrapper, 
-    .footer-links-grid {
-        grid-template-columns: 1fr !important;
+    .container { 
+        width: 90%; 
+        max-width: 1400px; 
+        margin: 0 auto; 
+    }
+    .flex-between { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
     }
     .section-padding { 
-        padding: 60px 0;
+        padding: 120px 0; 
     }
-}
-
-/* ===============================
-   FLOATING BUTTONS
-================================= */
-
-.floating-buttons {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 15px;
-    z-index: 9999;
-
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Buttons disappeared */
-.floating-buttons.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-}
-
-/* ===============================
-   WHATSAPP BUTTON
-================================= */
-
-.floating-whatsapp {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    color: #fff;
-    font-size: 26px;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    transition: 0.3s ease;
-
-    animation: whatsappPulse 2.5s infinite;
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.1);
-}
-
-/* ===============================
-   PULSE ANIMATION
-================================= */
-
-@keyframes whatsappPulse {
-    0% { 
-        box-shadow: 0 0 0 0 rgba(37,211,102,0.6); 
+    a { 
+        text-decoration: none; 
+        color: inherit; 
+        transition: var(--transition); 
     }
-    70% { 
-        box-shadow: 0 0 0 15px rgba(37,211,102,0); 
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
-    100% { 
-        box-shadow: 0 0 0 0 rgba(37,211,102,0); 
+    ::selection {
+        background: var(--accent);
+        color: var(--primary);
     }
-}
 
-/* ===============================
-   ONLINE BADGE
-================================= */
+    /* =====================================================
+    [03] ELITE CONSULTING HEADER ENGINEERING
+    =====================================================
+    Description:
+    Multi-layered navigation system designed for professional
+    hierarchy and luxury user experience.
 
-.wa-online {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 10px;
-    height: 10px;
-    background: #00ff84;
-    border-radius: 50%;
-    border: 2px solid white;
-}
+    Architecture:
+    1. Top Bar: High-level corporate links and social media.
+    2. Main Nav: Primary brand identity and navigation menu.
+    3. Mega Dropdown: Grid-based advanced menu with 
+    smooth visibility transitions.
 
-/* ===============================
-   WHATSAPP CHAT BUBBLE
-================================= */
+    UI Features:
+    - WhatsApp branded hover states.
+    - Animated logo underline.
+    - Luxury grid layout for services.
+    =====================================================
+    */
+    /* --- ELITE CONSULTING HEADER ENGINEERING --- */
+    .site-header {
+        width: 100%;
+        z-index: 1000;
+        position: relative;
+        background: #fff;
+    }
 
-.wa-chat-bubble{
+    /* 1. Top Bar - Corporate Language */
+    .top-bar {
+        background: var(--primary);
+        padding: 10px 0;
+        font-size: 13px;
+        color: rgba(255,255,255,0.7);
+    }
 
-    position:absolute;
+    .top-links a {
+        margin-right: 20px;
+        color: inherit;
+        transition: var(--transition);
+    }
 
-    right:60px;
-    bottom:50px;
+    .top-links a:hover { 
+        color: var(--accent); 
+    }
 
-    background:#fff;
-    color:#111;
+    .top-social { 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+    }
+    .top-social a { 
+        color: #fff; 
+        transition: var(--transition); 
+    }
+    .top-social a:hover { 
+        color: var(--accent); 
+        transform: translateY(-2px); 
+    }
 
-    font-size:13px;
-    line-height:1.4;
+    /* The WhatsApp icon is distinguished by its famous color, 
+    exclusive to Hover, to maintain the elegance of navy blue */
+    .top-social a:hover .fa-whatsapp {
+        color: #25D366;
+    }
+    .top-social a:hover .fa-youtube {
+        color: #FF0000;
+    }
+    .top-social a:hover .fa-facebook-f {
+        color: #1877F2;
+    }
+    .top-social a:hover .fa-instagram {
+        color: #E4405F;
+    }
+    .contact-numbers {
+        display: flex;
+        gap: 15px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .phone-link {
+        color: #fff !important;
+        font-size: 12px;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .phone-link:hover {
+        color: var(--accent) !important;
+    }
+    .phone-link i {
+        color: #25D366; /* WhatsApp's distinctive green color */
+        font-size: 14px;
+    }
 
-    padding:10px 14px;
+    /* Hide unnecessary links in the top bar */
+    @media (max-width: 991px) {
+        .top-bar .portal-link {
+            display: none !important;
+        }
+        /* Make the top bar centered on the mobile */
+        .top-bar .container {
+            justify-content: center;
+        }
+    }
 
-    border-radius:10px;
+    /* Hide numbers on very small screens to maintain a clean design */
+    @media (max-width: 768px) {
+        .top-bar .divider {
+            display: none !important;
+        }
+    } 
+    @media (max-width: 768px) {
+        .contact-numbers { 
+            display: none; 
+        }
+    }
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    .portal-link { 
+        background: rgba(225, 177, 106, 0.2); 
+        padding: 5px 12px; 
+        border-radius: 4px; 
+        color: var(--accent) !important;
+        font-weight: 600;
+    }
 
-    white-space:nowrap;
+    /* 2. Main Nav - Professional Navigation */
+    .main-nav {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+    }
 
-    opacity:0;
-    transform: translateY(0) translateX(0);
+    .logo {
+        font-family: 'Jost', sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--primary);
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+    }
 
-    transition:0.4s ease;
+    .logo span {
+        color: var(--accent);
+        font-weight: 300;
+        margin-left: 2px;
+    }
 
-    pointer-events:none;
-}
+    .logo::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: var(--transition);
+    }
 
-/* Show on Hover or Touch */
-.floating-whatsapp:hover .wa-chat-bubble,
-.floating-whatsapp.show-bubble .wa-chat-bubble {
-    opacity:1;
-    transform: translateY(0%) translateX(0);
-}
+    .logo:hover::after { 
+        width: 100%; 
+    }
 
-/* ===============================
-   FLOAT STUDY BUTTON UX BOOST
-================================= */
+    .nav-list { 
+        display: flex; 
+        gap: 35px; 
+        list-style: none; 
+        align-items: center; 
+    }
+    .nav-list a { 
+        font-weight: 700; 
+        color: var(--primary); 
+        text-transform: uppercase; 
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: var(--transition);
+    }
 
-.float-study {
-    position: relative;
-    overflow: hidden;
+    .nav-list a:hover, .nav-list a.active {
+        color: var(--accent); 
+    }
 
-    background: var(--accent);
-    color: var(--primary);
+    /* ---3. MEGA DROPDOWN: LUXURY IMPLEMENTATION --- */
+    /* Logic: 
+    Uses absolute positioning and grid layout to present 
+    complex service categories in a clean, organized manner. 
+    Includes transition effects for opacity and transform.
+    */
+    .has-mega { 
+        position: static; 
+    }
 
-    padding: 14px 22px;
+    .mega-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        z-index: 999;
+        border-top: 3px solid var(--accent);
+        padding: 50px 10% !important;
+        background: linear-gradient(to bottom, #ffffff, #fcfaf7);
+        transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.6s ease;
+    }
 
-    font-size: 13px;
-    font-weight: 700;
+    .has-mega:hover .mega-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    .mega-col h3 {
+        color: var(--primary);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
 
-    border-radius: 30px;
+    .mega-col a {
+        display: block;
+        padding: 10px 0 10px 25px !important;
+        font-weight: 500;
+        text-transform: none;
+        color: #555;
+        position: relative;
+        font-size: 15px;
+        transition: all 0.3s ease !important;
+    }
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    .mega-col a::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        opacity: 0;
+        transition: var(--transition);
+        font-size: 20px;
+    }
 
-    transition: 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-.float-study::after{
-    content:"";
-    position:absolute;
-    left:-100%;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(255,255,255,0.1);
-    transform:skewX(-20deg);
-    transition:0.6s;
-}
-.float-study:hover::after{
-    left:200%;
-}
+    .mega-col a:hover { 
+        color: var(--accent); 
+        padding-left: 30px !important;
+    }
 
-.float-study:hover, .float-study.auto-glow{
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 12px 30px rgba(0,0,0,0.25);
-}
+    .mega-col a:hover::before { 
+        opacity: 1; 
+    }
 
-/* ===============================
-   Media Query
-================================= */
-@media(max-width:768px){
-    .floating-buttons { right: 15px; bottom: 15px; }
-    .wa-chat-bubble { display:none; }
-}
+    /* ---4. TICKER BAR: GLASSMORPHISM EFFECT --- */
+    /* Purpose: 
+    Sticky information bar with subtle glass effect 
+    for important alerts or quick updates.
+    */
+    .ticker-bar {
+        background: rgba(248,249,250,0.95);
+        padding: 10px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-size: 13px;
+        font-weight: 500;
+        position: sticky;
+        top: 0;
+        z-index: 998;
+    }
+
+    .ticker-bar p {
+        font-family: 'Jost', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .ticker-bar span {
+        background: var(--accent);
+        color: var(--primary);
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .ticker-bar span:hover { 
+        background: var(--primary); 
+        color: #fff; 
+    }
+
+    /* ==================================================
+         ACTIONS & BUTTONS (Navigation Specific)
+    =====================================================
+    Components:
+    - Search Button Fix: Transparent logic for search trigger.
+    - Quote Button: High-contrast CTA with luxury shadow and 
+    hover transform effects.
+    =====================================================
+    */
+    .nav-actions { 
+        display: flex; 
+        align-items: center; 
+        gap: 25px; 
+    }
+    .nav-actions i { 
+        color: var(--primary); 
+        cursor: pointer; 
+        transition: var(--transition); 
+    }
+    .nav-actions i:hover { 
+        color: var(--accent); 
+    }
+
+    /* ===============================
+            SEARCH BUTTON FIX
+    ================================= */
+    .search-btn {
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        opacity: 0.7;
+    }
+
+    .btn-quote {
+        background: var(--primary);
+        color: #fff !important;
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-size: 12px !important;
+        font-weight: 700;
+        box-shadow: 0 10px 20px rgba(10, 14, 26, 0.15);
+        border: 2px solid var(--primary);
+        transition: var(--transition);
+    }
+
+    .btn-quote:hover {
+        background: transparent !important;
+        color: var(--primary) !important;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(10, 14, 26, 0.2);
+    }
+    @media (max-width: 991px) {
+        /* Hide only the separators */
+        .top-bar .divider {
+            display: none !important;
+        }
+
+        /* Minimize the main menu to fit the display */
+        .main-nav ul {
+            gap: 10px; /* Reduce the distance between links */
+        }
+
+        .main-nav ul li a {
+            font-size: 13px; /* Reduce font size slightly */
+            padding: 5px;
+        }
+
+        /* Make the logo and menu on two separate lines if necessary to prevent overlap */
+        .nav-container {
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px 0;
+        }
+    }
+
+
+    /* =====================================================
+    [04] SECTION: HERO SECTION (The Simulation) 
+    =====================================================
+    Description:
+    The primary high-impact area designed to capture interest 
+    immediately through visual storytelling and AI cues.
+
+    Features:
+    - Responsive Background: Intelligent object-fit logic to 
+    keep visual focus on key elements across devices.
+    - Neural Pulse: A pulsating animation giving the 
+    impression of live, active AI-driven feasibility.
+    - Luxury Gradient: A sophisticated dark-to-transparent 
+    overlay for maximum text legibility.
+    - Flexible Typography: Uses CSS clamp() for fluid 
+    scaling of headlines on different screen sizes.
+    =====================================================
+    */
+
+    .hero-section {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+    .hero-bg-picture{
+        position:absolute;
+        inset:0;
+        z-index:0;
+        width:100%;
+        height:100%;
+    }
+
+    .hero-bg-picture img {
+        display:block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center; /* Keeps the man on the right */
+    }
+    @media (max-width:1024px){
+    .hero-section{
+        background-attachment: scroll;
+    }
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* The golden touch: The gradient starts from dark blue to ensure 
+        the text is legible and ends with complete transparency to show the man */    
+        background: linear-gradient(to right, 
+            rgba(10, 17, 40, 1) 0%, 
+            rgba(10, 17, 40, 0.9) 35%, 
+            rgba(10, 17, 40, 0) 80%
+        );
+
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Improved Badge Design */
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(225, 177, 106, 0.1);
+        color: var(--accent);
+        padding: 8px 18px;
+        border-radius: 50px;
+        border: 1px solid rgba(225, 177, 106, 0.3);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 75px;
+    }
+
+    /* A pulsating dot gives the impression of Live AI */
+    .pulse {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 0 rgba(225, 177, 106, 0.4);
+        animation: pulse-animation 2s infinite;
+    }
+
+    @keyframes pulse-animation {
+        0% { box-shadow: 0 0 0 0 rgba(225, 177, 106, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(225, 177, 106, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(225, 177, 106, 0); }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding-left: 5%; /* Breathing space for the text from the left */
+    }
+
+    .hero-content h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(38px, 5.5vw, 70px); /* Flexible font size according to screen */
+        line-height: 1.15;
+        color: var(--white);
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .highlight {
+        color: var(--accent);
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        color: rgba(255,255,255,0.85);
+        max-width: 580px;
+        line-height: 1.8;
+        margin-bottom: 45px;
+    }
+
+    /* Luxury Buttons */
+    .btn-main {
+        background: var(--accent);
+        color: var(--primary) !important;
+        padding: 18px 38px;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: var(--transition);
+    }
+    .btn-main:hover {
+        background: var(--white);
+        transform: translateY(-5px);
+    }
+
+    .btn-secondary {
+        margin-left: 25px;
+        color: var(--white);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    .play-icon {
+        width: 55px;
+        height: 55px;
+        border: 1px solid var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
+    .btn-secondary:hover .play-icon {
+        background: var(--accent);
+        color: var(--primary);
+    }
+
+    .hero-trust {
+        margin-top: 60px;
+        opacity: 0.6;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .hero-trust::before {
+        content: '';
+        width: 30px;
+        height: 1px;
+        background: var(--accent);
+    }
+
+    /* Improved phone to ensure the man appears */
+    @media (max-width: 768px) {
+        .hero-section { 
+            background-position: center; 
+        }
+        .hero-overlay { 
+            background: rgba(10, 17, 40, 0.85); 
+        }
+        .hero-content { 
+            padding-left: 20px; 
+            text-align: center; 
+        }
+        .btn-secondary { 
+            margin-left: 0; 
+            margin-top: 20px; 
+        }
+    }
+
+    /* ===============================
+             TRUST LOGOS STRIP
+    ================================= */
+
+    .trust-logos {
+        padding: 40px 0;
+        background: #fff;
+    }
+
+    .logos-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .logos-grid img {
+        max-height: 50px;
+        opacity: 0.6;
+        transition: 0.3s ease;
+    }
+
+    .logos-grid img:hover {
+        opacity: 1;
+    }
+
+    /* ===================================
+            GLOBAL FEATURES SECTION 
+    ====================================== */
+
+    .global-features {
+        background: #fff;
+        border-top: 1px solid #eee;
+    }
+
+    .features-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+    }
+
+    .icon-stack {
+        position: relative;
+        height: 80px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* To ensure the disappearance of the exiting icon */
+    }
+
+    .icon-stack i {
+        font-size: 50px;
+        color: #e0e0e0; /* Pale color for the background icon */
+        position: absolute;
+        transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .icon-stack .f-top {
+        color: var(--accent); /* Gold color for the active icon */
+        transform: translateY(80px); /* Starting from the bottom outside the frame */
+        opacity: 0;
+    }
+
+    /* Switching action when the mouse hovers */
+    .f-item:hover .icon-stack i:first-child {
+        transform: translateY(-80px); /* The old icon rises to the top and disappears */
+        opacity: 0;
+    }
+
+    .f-item:hover .icon-stack .f-top {
+        transform: translateY(0); /* The new icon enters from the bottom to the center */
+        opacity: 1;
+    }
+
+    .f-item h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .f-item p {
+        font-size: 14px;
+        color: #777;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+
+
+    /* =====================================================
+    [05] COMPONENTS: GRID & GLASSMORPHISM
+    =====================================================
+    Purpose:
+    Interactive service containers that blend with the 
+    background while providing clear visual hierarchy.
+
+    UI Protocol:
+    - Card-Bg Scale: Smooth 1s transition on background images.
+    - Content Lift: Titles move upward on hover to reveal details.
+    - Arrow Link: Progressive underline animation for 
+    call-to-action elements.
+    =====================================================
+    */
+
+    .glass-grid { 
+        /* position: relative;  */
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px; 
+        margin-top: -10px; 
+        z-index: 10; 
+    }
+
+    .service-card { 
+        position: relative; 
+        display: flex; 
+        align-items: flex-end; 
+        padding: 40px; 
+        height: 450px; 
+        overflow: hidden; 
+        border-radius: 8px; 
+        color: #fff; 
+    }
+    .service-card::before { 
+        content: ''; 
+        position: absolute; 
+        inset: 0; 
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
+        z-index: 0;
+    }
+    .card-bg {
+        /* These features ensure that the image intelligently fills the space */
+        position: absolute; 
+        inset: 0; 
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s ease;
+        z-index: -1; 
+    }
+    .card-content p {
+        font-size: 15px;
+    }
+    .service-card .card-content {
+        z-index: 2; /* overlay */
+    }
+    .arrow-link {
+        position: relative;
+        display: inline-block;
+        color: var(--accent);
+        font-weight: 600;
+        padding-bottom: 5px;
+        letter-spacing: 1px;
+    }
+    .arrow-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: var(--transition);
+    }
+    .service-card .card-content h2 {
+        transition: var(--transition);
+    }
+    .service-card:hover .card-bg { 
+        transform: scale(1.1); 
+    }
+    .service-card:hover .arrow-link::after {
+        width: 100%; /* The line extends when hovering over the entire card */
+    }
+    .service-card:hover .card-content h2 {
+        transform: translateY(-20px); /* The title's upward movement at the Hoover */
+    }
+    .service-card,
+    .flip-inner,
+    .pro-tool-card {
+        will-change: transform;
+    }
+
+
+    /* =====================================================
+    [06] SECTION: PROJECTS (The Trend)
+    =====================================================
+    Description:
+    A high-end showcase for ventures and investment projects 
+    using advanced 3D interaction logic.
+
+    Logic:
+    Uses 'perspective' and 'rotateY' for a sophisticated 
+    card flip. Slower transition (1.2s) chosen for a 
+    heavyweight, professional feel.
+
+    Technical Highlights:
+    - Image Flip Box: Uses 1200px perspective for 3D depth.
+    - Flip Logic: Slow 1.2s cubic-bezier rotation for luxury feel.
+    - Tooltip System: Bottom-aligned informational labels that 
+    reveal tech stacks on hover.
+
+    Includes:
+    - Image Flip Box (Front/Back)
+    - Bottom-up Tooltips for tech stacks.
+    =====================================================
+    */
+
+    /* --- SECTION STYLING --- */
+    .section-head-center { 
+        text-align: center; 
+        margin-bottom: 50px; 
+    }
+    .sub-title { 
+        color: var(--accent); 
+        font-weight: 700; 
+        letter-spacing: 2px; 
+        text-transform: uppercase; 
+        display: block; 
+        margin-bottom: 10px; 
+    }
+    .section-head-center h2 { 
+        font-family: 'Playfair Display', serif; 
+        font-size: 40px; 
+        color: var(--primary); 
+    }
+
+    /* --- NAVIGATION BAR --- */
+    .projects-nav-bar {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05); 
+        padding-bottom: 25px; 
+        margin-bottom: 40px;
+    }
+    .nav-label { 
+        font-size: 22px; 
+        font-weight: 700; 
+        color: var(--primary); 
+        font-family: 'Playfair Display', serif; 
+    }
+    .nav-right { 
+        display: flex; 
+        align-items: center; 
+        gap: 40px; 
+    }
+    .categories-list { 
+        display: flex; 
+        gap: 25px; 
+    }
+    .cat-item { 
+        font-size: 13px; 
+        font-weight: 700; 
+        color: #ccc; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        transition: 0.3s ease;
+    }
+    .cat-item.active { 
+        color: var(--accent); 
+    }
+
+    .slider-arrows button {
+        background: transparent; 
+        border: 1.5px solid var(--accent); 
+        color: var(--primary);
+        width: 45px; 
+        height: 45px; 
+        border-radius: 50%; 
+        cursor: pointer; 
+        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .slider-arrows button:hover { 
+        background: var(--accent); 
+        color: #fff; 
+    }
+
+    /* --- PROJECT CARDS GRID --- */
+    .projects-slider { 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 30px; 
+    }
+
+    /* --- IMAGE FLIP (SLOWER & SMOOTHER) --- */
+    .image-flip-box { 
+        height: 300px; 
+        perspective: 1200px; 
+    }
+    .flip-inner {
+        position: relative; 
+        width: 100%; 
+        height: 100%;
+        /* Speed changed to 1.2s for a more luxury feel */
+        transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1); 
+        transform-style: preserve-3d;
+    }
+    .project-card:hover .flip-inner { 
+        transform: rotateY(180deg); 
+    }
+
+    .flip-front, .flip-back { 
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        backface-visibility: hidden; 
+        border-radius: 15px; 
+    }
+    .flip-front img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: 15px; 
+    }
+
+    .flip-back {
+        background: var(--primary); 
+        transform: rotateY(180deg);
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        padding: 30px; 
+        color: #fff; 
+        text-align: center; 
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    /* --- BACK CONTENT & BOTTOM TOOLTIP --- */
+    .back-content h4 { 
+        font-family: 'Playfair Display', serif; 
+        color: var(--accent); 
+        font-size: 20px; 
+        margin-bottom: 12px; 
+    }
+    .back-content p { 
+        font-size: 13px; 
+        line-height: 1.6; 
+        opacity: 0.8; 
+        margin-bottom: 25px; 
+    }
+
+    .back-tools { 
+        display: flex; 
+        gap: 20px; 
+        justify-content: center; 
+    }
+    .tool-wrapper { 
+        position: relative; 
+        display: inline-block; 
+    }
+
+    /* The Tooltip (Now appearing from Bottom) */
+    .tooltip {
+        position: absolute; 
+        top: 110%; 
+        left: 50%; 
+        transform: translateX(-50%);
+        background: var(--accent); 
+        color: var(--primary); 
+        padding: 6px 14px;
+        font-size: 10px; 
+        font-weight: 800; 
+        border-radius: 4px; 
+        white-space: nowrap;
+        opacity: 0; 
+        visibility: hidden; 
+        transition: 0.4s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 10;
+    }
+    .tooltip::before { 
+        /* Small triangle pointing Up */
+        content: ''; 
+        position: absolute; 
+        bottom: 100%; left: 50%; 
+        transform: translateX(-50%);
+        border-width: 5px; 
+        border-style: solid; 
+        border-color: transparent transparent var(--accent) transparent;
+    }
+    .tool-wrapper:hover .tooltip { 
+        opacity: 1; 
+        visibility: visible; 
+        top: 125%; 
+    }
+
+    .back-tools a {
+        width: 50px; 
+        height: 50px; 
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #fff; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        transition: 0.3s ease;
+    }
+    .back-tools a:hover { 
+        background: var(--accent); 
+        color: var(--primary); 
+        border-color: var(--accent); 
+        transform: translateY(3px); 
+    }
+
+    /* --- STATIC DATA --- */
+    .static-data { 
+        padding: 20px 5px; 
+    }
+    .sector { 
+        color: var(--accent); 
+        font-weight: 700; 
+        font-size: 11px; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+    .static-data h3 { 
+        font-size: 20px; 
+        color: var(--primary); 
+        margin: 8px 0; 
+        font-family: 'Playfair Display', serif; 
+        transition: 0.3s; 
+    }
+    .project-card:hover .static-data h3 { 
+        color: var(--accent); 
+    }
+    .stats { 
+        font-size: 14px; 
+        color: #777; 
+        font-weight: 500; 
+    }
+    .stats span { 
+        color: var(--primary); 
+        font-weight: 800; 
+        margin-left: 5px; 
+    }
+
+
+    /* =====================================================
+    [07] SECTION: TESTIMONIAL SECTION (THE EXECUTIVE LOOK)
+    =====================================================
+    Description:
+    A high-end 'Executive' testimonial layout designed to 
+    mimic a formal certification or an official board-room 
+    statement.
+
+    Design Architecture:
+    - Classic Backdrop: Uses #F5F6F8 (Cream/Off-white) for a 
+    formal, office-like aesthetic.
+    - Floating Quote: A centralized gold icon (#C6A75E) that 
+    breaks the upper border for visual depth.
+    - Typography: Uses 'Cormorant Garamond' for the quote text 
+    to deliver a prestigious, historical consulting feel.
+    - Client Profile: Grayscale filtering (30%) on images to 
+    maintain dignity and a professional atmosphere.
+    =====================================================
+    */
+
+    .testimonial-section {
+        background-color: #F5F6F8; /* Classic cream background suitable for formal offices */
+        padding: 90px 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--accent-light);
+        border-bottom: 2px solid var(--accent-light);
+    }
+
+    /* Section title in the middle */
+    .section-head-center {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .section-head-center .sub-title {
+        display: block;
+        font-family: 'Jost', sans-serif;
+        color: var(--accent); /* Gold color */
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .section-head-center h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        color: var(--primary); /* Royal Navy Blue */
+        font-weight: 700;
+    }
+
+    /* Certificate Container */
+    .testimonial-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        padding: 60px 40px;
+        background: #ffffff;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.03); /* Very light and elegant shade */
+        border-radius: 4px;
+    }
+
+    /* Classic Quote Icon */
+    .quote-icon {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px); /* Correcting the spelling mistake */
+        width: 70px;
+        height: 70px;
+        background: var(--accent);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 24px;
+        box-shadow: 0 10px 20px rgba(225, 177, 106, 0.3);
+        z-index: 2;
+    }
+
+    /* Quoted certificate text */
+    .testimonial-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        line-height: 1.7;
+        color: var(--primary);
+        font-style: italic;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Client Profile */
+    .client-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .client-img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .client-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        filter: grayscale(30%); /* A classic touch with added dignity */
+        border: 4px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .client-info h4 {
+        font-family: 'Jost', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 5px;
+    }
+
+    .client-info p {
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    /* Control buttons (Prev/Next) */
+    .testimonial-controls {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        padding: 0 20px;
+        pointer-events: none; /* So as not to hinder text compression */
+    }
+
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--accent);
+        color: var(--primary);
+        background: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+        pointer-events: auto; /* Re-enable pressing on it */
+    }
+
+    .control-btn:hover {
+        background: var(--accent);
+        color: var(--primary);
+        transform: scale(1.1);
+    }
+
+    /* Improved responsiveness for small screens */
+    @media (max-width: 768px) {
+        .testimonial-text { font-size: 20px; }
+        .testimonial-controls { 
+            position: static; 
+            transform: none; 
+            margin-top: 30px; 
+            justify-content: center; 
+        }
+    }
+
+
+    /* =====================================================
+    [08] SECTION: PURE BORDER GRADIENT PROTOCOL
+    =====================================================
+    Technical Deep-Dive:
+    Advanced implementation of interactive borders for the 
+    Strategic Tools section. 
+
+    Architecture:
+    - Mask-Composite Logic: Uses 'xor' and 'exclude' mask 
+    compositing to render only the border area.
+    - Dynamic Gradient: A hidden layer that illuminates 
+    with a Gold-to-White-to-Gold gradient on hover.
+    - Performance: Optimized with 'will-change' to ensure 
+    smooth 60fps animations during transform.
+    =====================================================
+    */
+
+    .tools-section {
+        background: #080c1a; /* الكحلي العميق الفاخر */
+        padding: 120px 0;
+    }
+
+    .section-main-title {
+        color: #ffffff !important;
+        font-size: 42px;
+        font-family: 'Playfair Display', serif;
+        margin-top: 15px;
+    }
+
+    .tools-grid-final {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 60px;
+    }
+
+    .pro-tool-card {
+        position: relative;
+        border-radius: 20px;
+        /* This is the transparent border that will hold the gradient */
+        border: 1.5px solid transparent; 
+        background: #080c1a; /* Primary card color */
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1;
+    }
+
+    /* Hidden gradient layer behind the border */
+    .pro-tool-card::before {
+        content: '';
+        position: absolute;
+        inset: -1.5px; /* Covers the border area exactly */
+        border-radius: 20px;
+        padding: 1.5px; 
+        background: linear-gradient(135deg, var(--accent), #fff, var(--accent));
+        
+        /* Global technology for removing the center and showing only the border */
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+
+        opacity: 0.15; /* Very pale border in normal conditions */
+        transition: 0.5s ease;
+        pointer-events: none; /* Prevents the layer from blocking the mouse from the buttons */
+    }
+
+    .pro-tool-inner {
+        padding: 50px 35px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        z-index: 2; /* To ensure the content appears above the border */
+        cursor: default;
+    }
+
+    .pro-icon-box {
+        font-size: 38px;
+        color: var(--accent);
+        margin-bottom: 25px;
+        transition: 0.5s ease;
+    }
+
+    .pro-tool-card h3 {
+        color: #ffffff;
+        font-size: 22px;
+        font-family: 'Jost', sans-serif;
+        margin-bottom: 18px;
+    }
+
+    .pro-tool-card p {
+        color: #a0aec0; /* Very clear gray */
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    .pro-footer {
+        margin-top: auto; /* The button always pushes down */
+        padding-top: 20px;
+    }
+
+    .pro-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-decoration: none;
+        cursor: pointer; /* Emphasizing the shape of the hand */
+        position: relative;
+        z-index: 10; /* Ensure it is above all layers to be compressible */
+        transition: all 0.3s ease;
+    }
+
+    .pro-footer a {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.6;
+        transition: 0.3s;
+    }
+
+
+    /* Arrow movement when hovering over the link */
+    .pro-link i {
+        transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
+
+    .pro-link:hover {
+        color: #ffffff;
+    }
+
+    .pro-link:hover i {
+        transform: translateX(8px);
+    }
+    a:focus,
+    button:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+    }
+
+
+    /* --- HOVER STATE: ONLY BORDER CHANGES --- */
+    .pro-tool-card:hover, 
+    .pro-tool-card.active {
+        transform: translateY(-10px);
+    }
+
+    /* The color gradient only illuminates at the border */
+    .pro-tool-card:hover::before,
+    .pro-tool-card.active::before {
+        opacity: 1;
+        background: linear-gradient(135deg, var(--accent), #fff, var(--accent));
+        /* A slight animation effect for the gradient can be added here */
+    }
+
+    .pro-tool-card:hover .pro-icon-box {
+        transform: scale(1.1);
+        text-shadow: 0 0 15px rgba(236, 186, 85, 0.4);
+    }
+
+    .pro-tool-card:hover p {
+        color: #ffffff;
+    }
+
+    .pro-tool-card:hover .pro-footer a {
+        opacity: 1;
+        gap: 12px;
+    }
+
+
+    /* =====================================================
+    [09] SECTION: STRATEGIC INSIGHTS (The Executive Blog)
+    =====================================================
+    Description:
+    A formal content grid for market analysis and reports.
+
+    Design Features:
+    - Sharp Angles: Zero border-radius for a more traditional 
+    corporate office feel.
+    - Image Zoom: 1s cubic-bezier scale effect on hover.
+    - Line Clamping: Uses '-webkit-box' to limit paragraph 
+    length to 3 lines for visual consistency.
+    - Subtle Accent: A bottom border that activates on hover.
+    =====================================================
+    */
+
+    .insights-section {
+        background-color: #f8f9fa;
+    }
+
+    .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .insight-card {
+        background: #fff;
+        border-radius: 0; /*Sharp angles give a more formal look.*/
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        border-bottom: 3px solid transparent;
+    }
+
+    .insight-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent); /* A golden line appears when hovering */
+    }
+
+    .insight-img {
+        position: relative;
+        height: 240px;
+        overflow: hidden;
+    }
+
+    .insight-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .insight-card:hover .insight-img img {
+        transform: scale(1.1);
+    }
+
+    .insight-img .category {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--accent);
+        color: var(--primary);
+        padding: 5px 15px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .insight-body {
+        padding: 30px;
+    }
+
+    .insight-body .meta {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    .insight-body h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        line-height: 1.4;
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .insight-body p {
+        font-size: 15px;
+        color: var(--text);
+        margin-bottom: 25px;
+
+        display: -webkit-box; /* Breaking the excess text down to three lines only */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        /* Add this line for security */
+        text-overflow: ellipsis;
+    }
+
+    .read-more {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: underline !important;
+        text-underline-offset: 5px;
+    }
+
+    .read-more:hover {
+        color: var(--accent);
+    }
+
+    /* Formatting for the top button */
+    .btn-text {
+        font-weight: 600;
+        color: var(--primary);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 5px;
+    }
+
+    .btn-text i {
+        margin-left: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-text:hover i {
+        transform: translateX(5px);
+    }
+
+
+    /* =====================================================
+    [10] SECTION: LEAD MAGNET & CONTACT CTA
+    =====================================================
+    Purpose:
+    High-conversion zones designed to transform visitors 
+    into business leads.
+
+    Components:
+    - Lead Box: Shadow-based depth (0.08 alpha) for contrast.
+    - Contact CTA: Deep navy gradient (#0A1128 to #0F1A3D) 
+    with rounded main buttons for higher click-through.
+    =====================================================
+    */
+
+    .lead-magnet {
+        text-align: center;
+    }
+
+    .lead-box {
+        max-width: 750px;
+        margin: auto;
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .lead-box h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 34px;
+        margin-bottom: 15px;
+        color: #0A1128;
+    }
+
+    .lead-box p {
+        margin-bottom: 25px;
+        color: #555;
+    }
+
+    .lead-form {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .lead-form input {
+        padding: 14px 16px;
+        width: 280px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+
+    .lead-form button {
+        padding: 14px 22px;
+        background: var(--accent);
+        border: none;
+        color: #0A1128;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: 0.3s ease;
+    }
+
+    .lead-form button:hover {
+        transform: translateY(-3px);
+    }
+
+    /* =====================================================
+    [11] SECTION: CONTACT & LEAD GENERATION
+    =====================================================
+    Description:
+    A strategic communication hub designed to collect high-quality 
+    business inquiries for the Egyptian and Saudi markets.
+
+    Technical Design:
+    - Form Logic: Uses a minimalist 'border-b' approach to create 
+    a clean, non-intimidating user experience.
+    - Lead Box: Implements a deep box-shadow (0.08 alpha) to 
+    subtly lift the inquiry form above the dark background.
+    - Responsive Inputs: Flexible width (280px to 100%) for 
+    perfect alignment on mobile devices.
+    - Interaction: Hover transforms on buttons to provide 
+    instant visual feedback (tactile feel).
+    =====================================================
+    */
+
+    .contact-cta {
+        background: linear-gradient(135deg, #0A1128 0%, #0F1A3D 100%);
+        color: #fff;
+        text-align: center;
+    }
+
+    .cta-box {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .contact-cta h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+
+    .contact-cta p {
+        font-size: 18px;
+        opacity: 0.85;
+        margin-bottom: 35px;
+    }
+
+    .contact-cta .btn-main {
+        display: inline-block;
+        padding: 14px 32px;
+        background: var(--accent);
+        color: #0A1128;
+        font-weight: 600;
+        border-radius: 40px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .contact-cta .btn-main:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    }
+
+
+    /* =====================================================
+    [12] SECTION: FOOTER ENGINEERING (The Executive Closure)
+    =====================================================
+    Description:
+    A multi-layered information architecture designed to 
+    conclude the user journey with authority.
+
+    Design Structure:
+    - Brand Shadow: 'text-shadow' applied to the logo for 
+    depth against the deep navy background.
+    - Newsletter Integration: Minimalist form fields with 
+    active focus states for gold border highlights.
+    - Social Matrix: Hover-responsive social icons using 
+    'transform' to indicate connectivity.
+    - Typography: Reduced font size (13px-14px) for a 
+    sophisticated, data-dense corporate look.
+    =====================================================
+    */
+
+    .main-footer {
+        background: #0a0e1a; /* A darker navy blue than usual to give a final touch of luxury */
+        color: #fff;
+        padding: 100px 0 30px;
+        border-top: 4px solid var(--accent); /* A thin gold line at the top of the footer */
+    }
+
+    /* Div 1 Styling */
+    .footer-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        margin-bottom: 60px;
+    }
+
+    .footer-subscribe h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .newsletter-form {
+        display: flex;
+        margin-top: 25px;
+        gap: 10px;
+    }
+    .newsletter-form input {
+        padding: 15px 25px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #fff;
+        width: 350px;
+        transition: 0.3s;
+    }
+    .newsletter-form input:focus {
+        border-color: var(--accent);
+        outline: none;
+    }
+
+    .btn-subscribe {
+        background: var(--accent);
+        color: var(--primary);
+        padding: 0 30px;
+        border: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+    .btn-subscribe:hover {
+        background: #fff;
+        transform: translateY(-3px);
+    }
+
+    .footer-social-box {
+        display: flex;
+        gap: 15px;
+    }
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid rgba(225, 177, 106, 0.2);
+        transition: var(--transition);
+    }
+    .social-icon:hover {
+        background: var(--accent);
+        color: var(--primary) !important;
+        transform: translateY(-5px);
+    }
+
+    /* Div 2: Grid Styling */
+    .footer-links-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 60px;
+    }
+    .footer-links-grid .logo {
+        font-family: 'Jost', sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: white;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: 20px; /* Aesthetic space under the logo */
+        /* Adding a very soft shadow to give depth */
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .footer-links-grid .logo span {
+        /* Emphasizing the light weight of the golden word to give a modern feel */
+        font-weight: 300; 
+        letter-spacing: 1px;
+    }
+
+    .footer-brand p {
+        margin-top: 20px;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.8;
+        font-size: 14px;
+        margin-top: 15px;
+        max-width: 320px; /* To ensure the text doesn't accidentally stretch unsightly */
+    }
+
+
+    .link-col h3 {
+        font-size: 18px;
+        color: var(--accent);
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    .link-col a {
+        display: block;
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 15px;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .link-col a:hover {
+        color: #fff;
+        padding-left: 8px; /* Slight gliding motion when hovering */
+    }
+
+    /* Div 3: Bottom Bar */
+    .footer-bottom-bar p {
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 30px;
+        font-size: 13px; /* Small size and elegant */
+        color: rgba(255, 255, 255, 0.5); /* A slightly translucent white color to be secondary */
+        letter-spacing: 0.5px;
+        word-spacing: 1px;
+        text-align: center;
+    }
+
+
+    /* Solving overall responsiveness problems */
+    @media (max-width: 992px) {
+        /* Section 1: Services */
+        .glass-grid { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+        }
+        /* Section 3: Services */
+        .features-wrapper { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+        }
+        /* Section 5: Services */
+        .projects-slider { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+        /* Section 7: Services */
+        .tools-grid-final  { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+        /* Section 8: Services */
+        .insights-grid { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+        }
+
+        /* Footer: Solution to the overlap between the hood and height */
+        .footer-links-grid {
+            grid-template-columns: 1fr 1fr !important; /* Split links into two columns */
+            gap: 30px;
+        }
+        .footer-top-row {
+            flex-direction: column;
+            text-align: center;
+            gap: 30px;
+        }
+        .newsletter-form {
+            flex-direction: column;
+            align-items: center;
+        }
+        .newsletter-form input { 
+            width: 100%; 
+            max-width: 400px; 
+        }
+    }
+
+    @media (max-width: 600px) {
+        /* Converting everything to a single column in the small mobile phone */
+        .glass-grid, 
+        .projects-slider, 
+        .tools-grid-final, 
+        .insights-grid, 
+        .features-wrapper, 
+        .footer-links-grid {
+            grid-template-columns: 1fr !important;
+        }
+        .section-padding { 
+            padding: 60px 0;
+        }
+    }
+
+    /* =====================================================
+    [13] UX ELEMENTS: FLOATING COMMUNICATIONS
+    =====================================================
+    Description:
+    Persistent interaction layer providing instant access 
+    to support and key academic studies.
+
+    Components:
+    - WhatsApp Pulse: Uses '@keyframes whatsappPulse' to 
+    create a ripple effect, simulating a live status.
+    - Smart Chat Bubble: 'visibility' and 'opacity' logic 
+    for non-intrusive notification.
+    - Study Glow: UX boost button with a 'skewX' shimmer 
+    effect to draw attention to the primary CTA.
+    =====================================================
+    */
+
+    .floating-buttons {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+        z-index: 9999;
+
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Buttons disappeared */
+    .floating-buttons.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+    }
+
+
+    /* ===============================
+    WHATSAPP BUTTON
+    ================================= */
+
+    .floating-whatsapp {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background: #25D366;
+        color: #fff;
+        font-size: 26px;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        transition: 0.3s ease;
+
+        animation: whatsappPulse 2.5s infinite;
+    }
+
+    .floating-whatsapp:hover {
+        transform: scale(1.1);
+    }
+
+    /* ===============================
+    PULSE ANIMATION
+    ================================= */
+
+    @keyframes whatsappPulse {
+        0% { 
+            box-shadow: 0 0 0 0 rgba(37,211,102,0.6); 
+        }
+        70% { 
+            box-shadow: 0 0 0 15px rgba(37,211,102,0); 
+        }
+        100% { 
+            box-shadow: 0 0 0 0 rgba(37,211,102,0); 
+        }
+    }
+
+    /* ===============================
+    ONLINE BADGE
+    ================================= */
+
+    .wa-online {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 10px;
+        height: 10px;
+        background: #00ff84;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+
+    /* ===============================
+    WHATSAPP CHAT BUBBLE
+    ================================= */
+    .wa-chat-bubble{
+
+        position:absolute;
+
+        right:60px;
+        bottom:50px;
+
+        background:#fff;
+        color:#111;
+
+        font-size:13px;
+        line-height:1.4;
+
+        padding:10px 14px;
+
+        border-radius:10px;
+
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+        white-space:nowrap;
+
+        opacity:0;
+        transform: translateY(0) translateX(0);
+
+        transition:0.4s ease;
+
+        pointer-events:none;
+    }
+
+    /* Show on Hover or Touch */
+    .floating-whatsapp:hover .wa-chat-bubble,
+    .floating-whatsapp.show-bubble .wa-chat-bubble {
+        opacity:1;
+        transform: translateY(0%) translateX(0);
+    }
+
+    /* ===============================
+    FLOAT STUDY BUTTON UX BOOST
+    ================================= */
+
+    .float-study {
+        position: relative;
+        overflow: hidden;
+
+        background: var(--accent);
+        color: var(--primary);
+
+        padding: 14px 22px;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        border-radius: 30px;
+
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+        transition: 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .float-study::after{
+        content:"";
+        position:absolute;
+        left:-100%;
+        top:0;
+        width:100%;
+        height:100%;
+        background:rgba(255,255,255,0.1);
+        transform:skewX(-20deg);
+        transition:0.6s;
+    }
+    .float-study:hover::after{
+        left:200%;
+    }
+
+    .float-study:hover, .float-study.auto-glow{
+        transform:translateY(-3px) scale(1.02);
+        box-shadow:0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    /* ===============================
+    Media Query
+    ================================= */
+    @media(max-width:768px){
+        .floating-buttons { right: 15px; bottom: 15px; }
+        .wa-chat-bubble { display:none; }
+    }

@@ -20,6 +20,88 @@
         >
 
         <link rel="stylesheet" href="css/style.css">
+
+        <link rel="canonical" href="https://yourdomain.com/">
+
+        <link rel="alternate" hreflang="en" href="https://yourdomain.com/">
+        <link rel="alternate" hreflang="ar" href="https://yourdomain.com/ar/">
+        <link rel="alternate" hreflang="x-default" href="https://yourdomain.com/">
+
+        <meta name="description" content="AI-powered feasibility studies and strategic advisory across MENA and global markets.">
+
+        <meta property="og:title" content="Elite Consulting | AI Strategic Advisory">
+        <meta property="og:description" content="Elite feasibility studies powered by real-time analytics.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="images/og-preview.jpg">
+
+        <meta property="og:url" content="https://yourdomain.com/">
+        <meta property="og:site_name" content="Elite Consulting">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="AI Feasibility Studies & Strategic Advisory">
+        <meta name="twitter:description" content="Elite feasibility studies powered by real-time analytics.">
+        <meta name="twitter:image" content="https://yourdomain.com/images/og-preview.jpg">
+
+        <meta name="theme-color" content="#0A1128">
+
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Elite Consulting Group",
+            "url": "https://yourdomain.com",
+            "logo": "https://yourdomain.com/images/logo.png",
+            "sameAs": [
+                "https://linkedin.com/company/yourpage",
+                "https://twitter.com/yourpage"
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+966549290131",
+                "contactType": "customer service",
+                "areaServed": "Worldwide"
+            }
+        }
+        </script>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const hero = document.querySelector(".hero-section");
+                const floatingButtons = document.querySelector(".floating-buttons");
+                const studyBtn = document.querySelector(".float-study");
+                const whatsappBtn = document.querySelector(".floating-whatsapp");
+
+                if (!hero || !floatingButtons) return;
+
+                // Intersection Observer: إخفاء / إظهار الأزرار حسب الهيرو
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            floatingButtons.classList.add("hidden");
+                        } else {
+                            floatingButtons.classList.remove("hidden");
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(hero);
+
+                // Bubble Tooltip يظهر على Touch Devices
+                setTimeout(()=>{
+                    if(whatsappBtn) whatsappBtn.classList.add("show-bubble");
+                    setTimeout(()=> whatsappBtn.classList.remove("show-bubble"), 5000);
+                }, 3000);
+
+                // Glow effect تلقائي لزر Start Study
+                setTimeout(()=>{
+                    if(studyBtn){
+                        studyBtn.classList.add("auto-glow");
+                        setTimeout(()=> studyBtn.classList.remove("auto-glow"),2000);
+                    }
+                },10000);
+            });
+            </script>
     </head>
     <body>
 
@@ -118,8 +200,7 @@
                     <img src="images/hero-section.webp"
                         alt="AI executive analyzing data in futuristic environment"
                         fetchpriority="high"
-                        decoding="async"
-                        loading="lazy">
+                        decoding="async">
                 </picture>
                 <div class="hero-overlay">
                     <div class="container">
@@ -148,6 +229,18 @@
                     </div>
                 </div>
             </section>
+
+            <!-- <section class="trust-logos">
+                <div class="container">
+                    <div class="logos-grid">
+                        <img src="images/logo1.png" alt="Client Logo" loading="lazy">
+                        <img src="images/logo2.png" alt="Client Logo" loading="lazy">
+                        <img src="images/logo3.png" alt="Client Logo" loading="lazy">
+                        <img src="images/logo4.png" alt="Client Logo" loading="lazy">
+                    </div>
+                </div>
+            </section>
+         -->
 
             <section class="global-features section-padding">
                 <div class="container">
@@ -654,10 +747,7 @@
         <div class="floating-buttons">
             <a href="https://wa.me/966549290131?text=Hello%20Elite%20Consulting,%20I%20am%20interested%20in%20a%20feasibility%20study." 
             class="floating-whatsapp"
-            target="_blank" 
-            rel="noopener" 
-            aria-label="Chat on WhatsApp"
-            loading="lazy">
+            target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
 
                 <span class="wa-online"></span>
                 <i class="fab fa-whatsapp"></i>
@@ -672,5 +762,7 @@
                 Start Your Feasibility Study
             </a>
         </div>
+
+        <script defer src="js/main.js"></script>
     </body>
 </html>
